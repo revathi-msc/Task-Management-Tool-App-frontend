@@ -12,7 +12,7 @@ const Tasks = () => {
   const [fetchData, { loading }] = useFetch();
 
   const fetchTasks = useCallback(() => {
-    const config = { url: "/tasks", method: "get", headers: { Authorization: authState.token } };
+    const config = { url: "https://task-management-tool-app-backend.onrender.com/tasks", method: "get", headers: { Authorization: authState.token } };
     fetchData(config, { showSuccessToast: false }).then(data => setTasks(data.tasks));
   }, [authState.token, fetchData]);
 
@@ -23,7 +23,7 @@ const Tasks = () => {
 
 
   const handleDelete = (id) => {
-    const config = { url: `/tasks/${id}`, method: "delete", headers: { Authorization: authState.token } };
+    const config = { url: `https://task-management-tool-app-backend.onrender.com/tasks/${id}`, method: "delete", headers: { Authorization: authState.token } };
     fetchData(config).then(() => fetchTasks());
   }
 
