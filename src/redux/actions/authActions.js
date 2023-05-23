@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const postLoginData = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
-    const { data } = await api.post('https://task-management-tool-app-backend.onrender.com/auth/login', { email, password });
+    const { data } = await api.post('/auth/login', { email, password });
     dispatch({
       type: LOGIN_SUCCESS,
       payload: data,
@@ -28,7 +28,7 @@ export const postLoginData = (email, password) => async (dispatch) => {
 
 export const saveProfile = (token) => async (dispatch) => {
   try {
-    const { data } = await api.get('https://task-management-tool-app-backend.onrender.com/profile', {
+    const { data } = await api.get('/profile', {
       headers: { Authorization: token }
     });
     dispatch({
